@@ -10,6 +10,7 @@
       padding: 0;
       background-color: #f0f0f0;
     }
+
     h1 {
       margin-top: 20px;
       font-size: 2em;
@@ -217,6 +218,7 @@
 
   <script>
     const reelPositions = [0, 0, 0, 0];
+    const reels = ["images2", "images3", "images4"];
 
     function speak(text) {
       if ('speechSynthesis' in window) {
@@ -230,9 +232,18 @@
       speak(labelElement.textContent.trim());
     }
 
+    function updateCombinedLabels() {
+      const combinedLabels = reels.map((id, index) => {
+        const reel = document.getElementById(id);
+        const currentImage = reel.children[reelPositions[index]];
+        return currentImage.querySelector(".label").textContent.trim();
+      });
+      document.getElementById("combinedLabels").textContent = combinedLabels.join(" ");
+    }
+
     function scrollUp(reelNumber) {
-      const reelIndex = reelNumber - 1;
-      const images = document.getElementById(`images${reelNumber}`);
+      const reelIndex = reelNumber - 2;
+      const images = document.getElementById(reels[reelIndex]);
       const reelCount = images.children.length;
 
       reelPositions[reelIndex] = (reelPositions[reelIndex] - 1 + reelCount) % reelCount;
@@ -241,11 +252,12 @@
 
       const label = images.children[reelPositions[reelIndex]].querySelector(".label").textContent.trim();
       speak(label);
+      updateCombinedLabels();
     }
 
     function scrollDown(reelNumber) {
-      const reelIndex = reelNumber - 1;
-      const images = document.getElementById(`images${reelNumber}`);
+      const reelIndex = reelNumber - 2;
+      const images = document.getElementById(reels[reelIndex]);
       const reelCount = images.children.length;
 
       reelPositions[reelIndex] = (reelPositions[reelIndex] + 1) % reelCount;
@@ -254,6 +266,7 @@
 
       const label = images.children[reelPositions[reelIndex]].querySelector(".label").textContent.trim();
       speak(label);
+      updateCombinedLabels();
     }
   </script>
 </body>
