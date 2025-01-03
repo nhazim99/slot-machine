@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Adjusted Spacing</title>
+  <title>Slot Machine - Responsive Design</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -10,23 +11,27 @@
       padding: 0;
       background-color: #f0f0f0;
     }
+
     h1 {
-      margin-top: 60px;
-      font-size: 2em;
+      margin-top: 20px;
+      font-size: 1.5em;
     }
 
     .slot-machine {
       display: flex;
-      align-items: flex-start; 
+      flex-wrap: wrap; /* Allows reels to wrap on smaller screens */
+      align-items: flex-start;
       justify-content: center;
-      gap: 40px;
-      margin: 60px auto;
+      gap: 20px;
+      margin: 20px auto;
     }
 
     .column {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%; /* Default to full width */
+      max-width: 200px; /* Constrain maximum width */
       margin: 0;
       padding: 0;
     }
@@ -37,19 +42,16 @@
       border-radius: 8px;
       padding: 4px 8px;
       text-align: center;
-      font-size: 28px;
-      margin: 0; 
-      min-height: 40px; 
-      line-height: 40px; 
+      font-size: 1.2em;
+      margin: 0;
+      min-height: 40px;
+      line-height: 40px;
       white-space: nowrap;
-    }
-    .reel-title.hidden {
-      visibility: hidden;
     }
 
     .reel {
-      display: inline-flex;  
-      flex-direction: column; 
+      display: flex;
+      flex-direction: column;
       align-items: center;
       border: 4px solid #333;
       border-radius: 20px;
@@ -60,7 +62,9 @@
       text-align: center;
       margin: 0;
       padding: 0;
-      height: 240px;
+      height: 200px;
+      width: 100%; /* Responsive width */
+      max-width: 200px; /* Maximum reel width */
     }
 
     .images {
@@ -75,23 +79,23 @@
       align-items: center;
       justify-content: flex-start;
       box-sizing: border-box;
-      height: 240px;
+      height: 200px; /* Match reel height */
       padding: 10px;
     }
 
     .image-container img {
-      width: 160px;
+      width: 100px; /* Smaller image width for mobile */
       height: auto;
     }
 
     .label {
-      margin-top: 8px; 
-      background: rgba(0,0,0,0.5);
+      margin-top: 8px;
+      background: rgba(0, 0, 0, 0.5);
       color: #fff;
       border-radius: 8px;
       padding: 4px 8px;
       box-sizing: border-box;
-      font-size: 28px;
+      font-size: 1em;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -107,9 +111,9 @@
     }
 
     .arrow-button {
-      width: 60px;
-      height: 60px;
-      font-size: 40px;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
       line-height: 0;
       background-color: #f2f2f2;
       border: 2px solid #ccc;
@@ -117,22 +121,83 @@
       cursor: pointer;
       outline: none;
     }
+
     .arrow-button:hover {
       background-color: #eee;
     }
+
     .arrow-button:active {
       background-color: #ddd;
     }
 
     .combined-labels {
-      margin-top: 20px; /* Reduce spacing between My Sentence and combined text */
-      font-size: 32px;
+      margin-top: 20px;
+      font-size: 1.2em;
       font-weight: normal;
+    }
+
+    /* Responsive design for smaller devices */
+    @media (max-width: 768px) {
+      .reel {
+        max-width: 150px;
+        height: 150px;
+      }
+
+      .image-container {
+        height: 150px;
+      }
+
+      .image-container img {
+        width: 80px;
+      }
+
+      .arrow-button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .label {
+        font-size: 0.9em;
+      }
+
+      .combined-labels {
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .reel {
+        max-width: 120px;
+        height: 120px;
+      }
+
+      .image-container {
+        height: 120px;
+      }
+
+      .image-container img {
+        width: 60px;
+      }
+
+      .arrow-button {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      .label {
+        font-size: 0.8em;
+      }
+
+      .combined-labels {
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Slot Machine - Adjusted Spacing</h1>
+  <h1>Slot Machine - Responsive Design</h1>
 
   <div class="slot-machine">
     <!-- Reel 1 -->
@@ -142,15 +207,15 @@
         <div class="images" id="images1">
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Let's test the text with spacing</div>
+            <div class="label">Strawberry</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">There</div>
+            <div class="label">Banana</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Another Label</div>
+            <div class="label">Orange</div>
           </div>
         </div>
       </div>
@@ -160,11 +225,11 @@
       </div>
     </div>
 
-    <!-- Other Reels... -->
+    <!-- Other reels... -->
 
   </div>
 
-  <h2 style="margin: 20px 0 10px; font-size: 2em;">My Sentence</h2>
+  <h2 style="margin-top: 20px; font-size: 1.5em;">My Sentence</h2>
   <div id="combinedLabels" class="combined-labels"></div>
 
   <script>
@@ -173,7 +238,7 @@
 
     function speak(text) {
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); 
+        window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         window.speechSynthesis.speak(utterance);
       } else {
@@ -181,13 +246,13 @@
       }
     }
 
-    window.onload = function() {
+    window.onload = function () {
       const totalReels = 4;
       for (let reelNumber = 1; reelNumber <= totalReels; reelNumber++) {
         const containers = document.querySelectorAll(`#images${reelNumber} .image-container`);
-        const labelsForThisReel = Array.from(containers).map(container => {
-          return container.querySelector(".label").textContent.trim();
-        });
+        const labelsForThisReel = Array.from(containers).map(container =>
+          container.querySelector('.label').textContent.trim()
+        );
         reelLabels.push(labelsForThisReel);
       }
       updateCombinedLabels();
@@ -200,10 +265,8 @@
     };
 
     function updateCombinedLabels() {
-      const currentLabels = reelPositions.map((pos, reelIndex) => {
-        return reelLabels[reelIndex][pos];
-      });
-      document.getElementById("combinedLabels").textContent = currentLabels.join(" ");
+      const currentLabels = reelPositions.map((pos, reelIndex) => reelLabels[reelIndex][pos]);
+      document.getElementById('combinedLabels').textContent = currentLabels.join(' ');
     }
 
     function scrollUp(reelNumber) {
@@ -212,7 +275,7 @@
       if (reelPositions[reelIndex] < 0) {
         reelPositions[reelIndex] = 2;
       }
-      const offset = reelPositions[reelIndex] * 240;
+      const offset = reelPositions[reelIndex] * 200;
       document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
       updateCombinedLabels();
       speak(reelLabels[reelIndex][reelPositions[reelIndex]]);
@@ -224,7 +287,7 @@
       if (reelPositions[reelIndex] > 2) {
         reelPositions[reelIndex] = 0;
       }
-      const offset = reelPositions[reelIndex] * 240;
+      const offset = reelPositions[reelIndex] * 200;
       document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
       updateCombinedLabels();
       speak(reelLabels[reelIndex][reelPositions[reelIndex]]);
