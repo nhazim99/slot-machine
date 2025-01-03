@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Updated First Reel</title>
+  <title>Slot Machine - Fully Functional</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -132,7 +132,7 @@
   </style>
 </head>
 <body>
-  <h1>Slot Machine - Updated First Reel</h1>
+  <h1>Slot Machine - Fully Functional</h1>
 
   <div class="slot-machine">
     <!-- Reel 1: Ado -->
@@ -153,15 +153,15 @@
         <div class="images" id="images2">
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
+            <div class="label" onclick="speak('Strawberry')">Strawberry</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
+            <div class="label" onclick="speak('Banana')">Banana</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
+            <div class="label" onclick="speak('Orange')">Orange</div>
           </div>
         </div>
       </div>
@@ -178,15 +178,15 @@
         <div class="images" id="images3">
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
+            <div class="label" onclick="speak('Strawberry')">Strawberry</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
+            <div class="label" onclick="speak('Banana')">Banana</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
+            <div class="label" onclick="speak('Orange')">Orange</div>
           </div>
         </div>
       </div>
@@ -203,15 +203,15 @@
         <div class="images" id="images4">
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
+            <div class="label" onclick="speak('Strawberry')">Strawberry</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
+            <div class="label" onclick="speak('Banana')">Banana</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
+            <div class="label" onclick="speak('Orange')">Orange</div>
           </div>
         </div>
       </div>
@@ -226,7 +226,7 @@
   <div id="combinedLabels" class="combined-labels"></div>
 
   <script>
-    const reelPositions = [0, 0, 0];
+    const reelPositions = [0, 0, 0, 0];
     const reelLabels = [];
 
     function speak(text) {
