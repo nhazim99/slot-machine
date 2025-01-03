@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Auto-Resizing Reels</title>
+  <title>Slot Machine - Adjusted Spacing</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -125,14 +125,14 @@
     }
 
     .combined-labels {
-      margin-top: 60px;
+      margin-top: 20px; /* Reduce spacing between My Sentence and combined text */
       font-size: 32px;
-      font-weight: normal; /* Unbold the combined text */
+      font-weight: normal;
     }
   </style>
 </head>
 <body>
-  <h1>Slot Machine - Auto-Resizing Reels</h1>
+  <h1>Slot Machine - Adjusted Spacing</h1>
 
   <div class="slot-machine">
     <!-- Reel 1 -->
@@ -160,83 +160,11 @@
       </div>
     </div>
 
-    <!-- Reel 2 -->
-    <div class="column">
-      <div class="reel-title hidden"></div>
-      <div class="reel" id="reel2">
-        <div class="images" id="images2">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
-          </div>
-        </div>
-      </div>
-      <div class="button-group">
-        <button class="arrow-button" onclick="scrollUp(2)">▲</button>
-        <button class="arrow-button" onclick="scrollDown(2)">▼</button>
-      </div>
-    </div>
+    <!-- Other Reels... -->
 
-    <!-- Reel 3 -->
-    <div class="column">
-      <div class="reel-title hidden"></div>
-      <div class="reel" id="reel3">
-        <div class="images" id="images3">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
-          </div>
-        </div>
-      </div>
-      <div class="button-group">
-        <button class="arrow-button" onclick="scrollUp(3)">▲</button>
-        <button class="arrow-button" onclick="scrollDown(3)">▼</button>
-      </div>
-    </div>
-
-    <!-- Reel 4 -->
-    <div class="column">
-      <div class="reel-title">Gapo</div>
-      <div class="reel" id="reel4">
-        <div class="images" id="images4">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
-          </div>
-        </div>
-      </div>
-      <div class="button-group">
-        <button class="arrow-button" onclick="scrollUp(4)">▲</button>
-        <button class="arrow-button" onclick="scrollDown(4)">▼</button>
-      </div>
-    </div>
   </div>
 
-  <h2 style="margin-top: 60px; font-size: 2em;">My Sentence</h2>
+  <h2 style="margin: 20px 0 10px; font-size: 2em;">My Sentence</h2>
   <div id="combinedLabels" class="combined-labels"></div>
 
   <script>
