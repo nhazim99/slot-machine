@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Responsive Design</title>
+  <title>Slot Machine - Fully Responsive Design</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -19,22 +19,22 @@
 
     .slot-machine {
       display: flex;
+      flex-wrap: nowrap; /* Prevent wrapping */
       justify-content: center;
       align-items: flex-start;
-      gap: 5vw; /* Dynamic gap between reels */
+      gap: 1vw; /* Dynamic gap between reels */
       margin: 10px auto;
-      overflow-x: auto;
+      overflow-x: auto; /* Enable horizontal scrolling if necessary */
       padding: 10px;
-      white-space: nowrap; /* Prevent wrapping */
     }
 
     .column {
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      width: auto;
-      margin: 0;
-      padding: 0;
+      flex: 0 1 calc(25% - 20px); /* Ensure shrinkability while maintaining space */
+      min-width: 120px; /* Minimum width for each column */
+      max-width: 200px; /* Limit maximum width for larger screens */
     }
 
     .reel-title {
@@ -45,13 +45,8 @@
       text-align: center;
       font-size: calc(0.5em + 1vw); /* Responsive label size */
       margin: 0;
-      min-height: 30px;
-      line-height: 30px;
+      line-height: 1.2;
       white-space: nowrap;
-    }
-
-    .reel-title.hidden {
-      visibility: hidden;
     }
 
     .reel {
@@ -67,6 +62,7 @@
       text-align: center;
       height: calc(100px + 5vw); /* Scales dynamically */
       width: calc(80px + 5vw);
+      flex-shrink: 1; /* Allow shrinking on smaller screens */
     }
 
     .images {
@@ -138,7 +134,7 @@
   </style>
 </head>
 <body>
-  <h1>Slot Machine - Responsive Design</h1>
+  <h1>Slot Machine - Fully Responsive Design</h1>
 
   <div class="slot-machine">
     <!-- Reel 1 -->
