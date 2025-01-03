@@ -19,7 +19,7 @@
 
     .slot-machine {
       display: flex;
-      flex-wrap: wrap; /* Wrap reels if needed for smaller screens */
+      flex-wrap: wrap;
       align-items: flex-start;
       justify-content: center;
       gap: 20px;
@@ -31,7 +31,7 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      max-width: 200px;
+      max-width: 160px;
       margin: 0;
       padding: 0;
     }
@@ -42,10 +42,10 @@
       border-radius: 8px;
       padding: 4px 8px;
       text-align: center;
-      font-size: 1.2em;
+      font-size: 1em;
       margin: 0;
-      min-height: 40px;
-      line-height: 40px;
+      min-height: 30px;
+      line-height: 30px;
       white-space: nowrap;
     }
 
@@ -67,7 +67,7 @@
       margin: 0;
       padding: 0;
       height: 200px;
-      width: 160px;
+      width: 140px;
     }
 
     .images {
@@ -82,23 +82,22 @@
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      height: 200px; /* Match reel height */
-      padding: 0; /* Remove additional padding */
+      height: 200px;
     }
 
     .image-container img {
-      width: 120px; /* Slightly larger image */
+      width: 100px;
       height: auto;
     }
 
     .label {
-      margin-top: 5px; /* Reduce spacing between image and label */
+      margin-top: 5px;
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
       border-radius: 8px;
       padding: 4px 8px;
       box-sizing: border-box;
-      font-size: 0.9em;
+      font-size: 0.8em;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -114,13 +113,12 @@
     }
 
     .arrow-button {
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
-      line-height: 0;
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
       background-color: #f2f2f2;
       border: 2px solid #ccc;
-      border-radius: 10px;
+      border-radius: 5px;
       cursor: pointer;
       outline: none;
     }
@@ -137,56 +135,6 @@
       margin-top: 20px;
       font-size: 1.2em;
       font-weight: normal;
-    }
-
-    @media (max-width: 768px) {
-      .reel {
-        width: 140px;
-        height: 160px;
-      }
-
-      .image-container {
-        height: 160px;
-      }
-
-      .image-container img {
-        width: 100px;
-      }
-
-      .arrow-button {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-      }
-
-      .label {
-        font-size: 0.8em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .reel {
-        width: 120px;
-        height: 140px;
-      }
-
-      .image-container {
-        height: 140px;
-      }
-
-      .image-container img {
-        width: 80px;
-      }
-
-      .arrow-button {
-        width: 25px;
-        height: 25px;
-        font-size: 14px;
-      }
-
-      .label {
-        font-size: 0.7em;
-      }
     }
   </style>
 </head>
@@ -219,7 +167,55 @@
       </div>
     </div>
 
-    <!-- Other Reels -->
+    <!-- Reel 2 -->
+    <div class="column">
+      <div class="reel-title hidden"></div>
+      <div class="reel" id="reel2">
+        <div class="images" id="images2">
+          <div class="image-container">
+            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
+            <div class="label">Strawberry</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
+            <div class="label">Banana</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
+            <div class="label">Orange</div>
+          </div>
+        </div>
+      </div>
+      <div class="button-group">
+        <button class="arrow-button" onclick="scrollUp(2)">▲</button>
+        <button class="arrow-button" onclick="scrollDown(2)">▼</button>
+      </div>
+    </div>
+
+    <!-- Reel 3 -->
+    <div class="column">
+      <div class="reel-title hidden"></div>
+      <div class="reel" id="reel3">
+        <div class="images" id="images3">
+          <div class="image-container">
+            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
+            <div class="label">Strawberry</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
+            <div class="label">Banana</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
+            <div class="label">Orange</div>
+          </div>
+        </div>
+      </div>
+      <div class="button-group">
+        <button class="arrow-button" onclick="scrollUp(3)">▲</button>
+        <button class="arrow-button" onclick="scrollDown(3)">▼</button>
+      </div>
+    </div>
 
     <!-- Reel 4 -->
     <div class="column">
@@ -247,7 +243,7 @@
     </div>
   </div>
 
-  <h2 style="margin-top: 20px; font-size: 1.5em;">My Sentence</h2>
+  <h2 style="margin-top: 20px; font-size: 1.2em;">My Sentence</h2>
   <div id="combinedLabels" class="combined-labels"></div>
 
   <script>
