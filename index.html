@@ -22,6 +22,7 @@
       justify-content: center;
       gap: 20px;
       margin: 40px auto;
+      flex-wrap: nowrap; /* Ensure reels stay on a single row */
     }
 
     .column {
@@ -233,12 +234,13 @@
     }
 
     function updateCombinedLabels() {
+      const firstLabel = document.querySelector(".column:first-child .label").textContent.trim();
       const combinedLabels = reels.map((id, index) => {
         const reel = document.getElementById(id);
         const currentImage = reel.children[reelPositions[index]];
         return currentImage.querySelector(".label").textContent.trim();
       });
-      document.getElementById("combinedLabels").textContent = combinedLabels.join(" ");
+      document.getElementById("combinedLabels").textContent = [firstLabel, ...combinedLabels].join(" ");
     }
 
     function scrollUp(reelNumber) {
@@ -268,7 +270,8 @@
       speak(label);
       updateCombinedLabels();
     }
+
+    window.onload = updateCombinedLabels;
   </script>
 </body>
 </html>
-
