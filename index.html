@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Responsive Design with 4 Reels</title>
+  <title>Slot Machine - Reduced Spacing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -30,8 +30,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%; /* Default to full width */
-      max-width: 200px; /* Constrain maximum width */
+      width: 100%;
+      max-width: 200px;
       margin: 0;
       padding: 0;
     }
@@ -54,7 +54,7 @@
     }
 
     .reel {
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
       align-items: center;
       border: 4px solid #333;
@@ -67,8 +67,7 @@
       margin: 0;
       padding: 0;
       height: 200px;
-      width: 100%; /* Responsive width */
-      max-width: 200px; /* Maximum reel width */
+      width: 160px;
     }
 
     .images {
@@ -81,25 +80,25 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       box-sizing: border-box;
       height: 200px; /* Match reel height */
-      padding: 10px;
+      padding: 0; /* Remove additional padding */
     }
 
     .image-container img {
-      width: 100px; /* Responsive image width */
+      width: 120px; /* Slightly larger image */
       height: auto;
     }
 
     .label {
-      margin-top: 8px;
+      margin-top: 5px; /* Reduce spacing between image and label */
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
       border-radius: 8px;
       padding: 4px 8px;
       box-sizing: border-box;
-      font-size: 1em;
+      font-size: 0.9em;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -115,9 +114,9 @@
     }
 
     .arrow-button {
-      width: 50px;
-      height: 50px;
-      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
       line-height: 0;
       background-color: #f2f2f2;
       border: 2px solid #ccc;
@@ -140,15 +139,39 @@
       font-weight: normal;
     }
 
-    /* Responsive design for smaller devices */
     @media (max-width: 768px) {
       .reel {
-        max-width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 160px;
       }
 
       .image-container {
-        height: 150px;
+        height: 160px;
+      }
+
+      .image-container img {
+        width: 100px;
+      }
+
+      .arrow-button {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+      }
+
+      .label {
+        font-size: 0.8em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .reel {
+        width: 120px;
+        height: 140px;
+      }
+
+      .image-container {
+        height: 140px;
       }
 
       .image-container img {
@@ -156,52 +179,19 @@
       }
 
       .arrow-button {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-      }
-
-      .label {
-        font-size: 0.9em;
-      }
-
-      .combined-labels {
-        font-size: 1em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .reel {
-        max-width: 120px;
-        height: 120px;
-      }
-
-      .image-container {
-        height: 120px;
-      }
-
-      .image-container img {
-        width: 60px;
-      }
-
-      .arrow-button {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         font-size: 14px;
       }
 
       .label {
-        font-size: 0.8em;
-      }
-
-      .combined-labels {
-        font-size: 0.9em;
+        font-size: 0.7em;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Slot Machine - Responsive Design</h1>
+  <h1>Slot Machine - Reduced Spacing</h1>
 
   <div class="slot-machine">
     <!-- Reel 1 -->
@@ -229,55 +219,7 @@
       </div>
     </div>
 
-    <!-- Reel 2 -->
-    <div class="column">
-      <div class="reel-title hidden"></div>
-      <div class="reel" id="reel2">
-        <div class="images" id="images2">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
-          </div>
-        </div>
-      </div>
-      <div class="button-group">
-        <button class="arrow-button" onclick="scrollUp(2)">▲</button>
-        <button class="arrow-button" onclick="scrollDown(2)">▼</button>
-      </div>
-    </div>
-
-    <!-- Reel 3 -->
-    <div class="column">
-      <div class="reel-title hidden"></div>
-      <div class="reel" id="reel3">
-        <div class="images" id="images3">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
-          </div>
-        </div>
-      </div>
-      <div class="button-group">
-        <button class="arrow-button" onclick="scrollUp(3)">▲</button>
-        <button class="arrow-button" onclick="scrollDown(3)">▼</button>
-      </div>
-    </div>
+    <!-- Other Reels -->
 
     <!-- Reel 4 -->
     <div class="column">
@@ -317,8 +259,6 @@
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         window.speechSynthesis.speak(utterance);
-      } else {
-        console.warn('Web Speech API not supported.');
       }
     }
 
