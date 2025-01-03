@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Reduced Spacing</title>
+  <title>Slot Machine - Fixed Horizontal Layout</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -19,15 +19,16 @@
 
     .slot-machine {
       display: flex;
-      flex-wrap: wrap;
       align-items: flex-start;
       justify-content: center;
       gap: 20px;
       margin: 20px auto;
+      overflow-x: auto; /* Ensure horizontal scrollability if needed */
+      white-space: nowrap; /* Prevent wrapping */
     }
 
     .column {
-      display: flex;
+      display: inline-flex; /* Inline-flex to enforce horizontal layout */
       flex-direction: column;
       align-items: center;
       width: 100%;
@@ -139,7 +140,7 @@
   </style>
 </head>
 <body>
-  <h1>Slot Machine - Reduced Spacing</h1>
+  <h1>Slot Machine - Fixed Horizontal Layout</h1>
 
   <div class="slot-machine">
     <!-- Reel 1 -->
