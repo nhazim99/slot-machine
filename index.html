@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Responsive Design</title>
+  <title>Slot Machine - Responsive Design with 4 Reels</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -19,7 +19,7 @@
 
     .slot-machine {
       display: flex;
-      flex-wrap: wrap; /* Allows reels to wrap on smaller screens */
+      flex-wrap: wrap; /* Wrap reels if needed for smaller screens */
       align-items: flex-start;
       justify-content: center;
       gap: 20px;
@@ -49,8 +49,12 @@
       white-space: nowrap;
     }
 
+    .reel-title.hidden {
+      visibility: hidden;
+    }
+
     .reel {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       align-items: center;
       border: 4px solid #333;
@@ -84,7 +88,7 @@
     }
 
     .image-container img {
-      width: 100px; /* Smaller image width for mobile */
+      width: 100px; /* Responsive image width */
       height: auto;
     }
 
@@ -225,8 +229,80 @@
       </div>
     </div>
 
-    <!-- Other reels... -->
+    <!-- Reel 2 -->
+    <div class="column">
+      <div class="reel-title hidden"></div>
+      <div class="reel" id="reel2">
+        <div class="images" id="images2">
+          <div class="image-container">
+            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
+            <div class="label">Strawberry</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
+            <div class="label">Banana</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
+            <div class="label">Orange</div>
+          </div>
+        </div>
+      </div>
+      <div class="button-group">
+        <button class="arrow-button" onclick="scrollUp(2)">▲</button>
+        <button class="arrow-button" onclick="scrollDown(2)">▼</button>
+      </div>
+    </div>
 
+    <!-- Reel 3 -->
+    <div class="column">
+      <div class="reel-title hidden"></div>
+      <div class="reel" id="reel3">
+        <div class="images" id="images3">
+          <div class="image-container">
+            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
+            <div class="label">Strawberry</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
+            <div class="label">Banana</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
+            <div class="label">Orange</div>
+          </div>
+        </div>
+      </div>
+      <div class="button-group">
+        <button class="arrow-button" onclick="scrollUp(3)">▲</button>
+        <button class="arrow-button" onclick="scrollDown(3)">▼</button>
+      </div>
+    </div>
+
+    <!-- Reel 4 -->
+    <div class="column">
+      <div class="reel-title">Gapo</div>
+      <div class="reel" id="reel4">
+        <div class="images" id="images4">
+          <div class="image-container">
+            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
+            <div class="label">Strawberry</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
+            <div class="label">Banana</div>
+          </div>
+          <div class="image-container">
+            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
+            <div class="label">Orange</div>
+          </div>
+        </div>
+      </div>
+      <div class="button-group">
+        <button class="arrow-button" onclick="scrollUp(4)">▲</button>
+        <button class="arrow-button" onclick="scrollDown(4)">▼</button>
+      </div>
+    </div>
   </div>
 
   <h2 style="margin-top: 20px; font-size: 1.5em;">My Sentence</h2>
