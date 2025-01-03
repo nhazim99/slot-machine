@@ -15,10 +15,9 @@
       font-size: 2em;
     }
 
-    /* The container for all reels in one row. */
     .slot-machine {
       display: flex;
-      align-items: flex-start;  /* top alignment */
+      align-items: flex-start; 
       justify-content: center;
       gap: 40px;
       margin: 60px auto;
@@ -28,15 +27,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* no fixed width here; let it auto-size */
       margin: 0;
       padding: 0;
     }
 
-    /*
-      Give reel-title a fixed min-height so reels with no label 
-      still line up, but remove margin so there's no gap.
-    */
     .reel-title {
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
@@ -53,14 +47,9 @@
       visibility: hidden;
     }
 
-    /*
-      The reel now uses inline-flex (or block) 
-      so it can expand horizontally for long labels.
-      We only fix the height to 240px, not the width.
-    */
     .reel {
-      display: inline-flex;      /* so it grows with content width */
-      flex-direction: column;    /* image + label stack vertically */
+      display: inline-flex;  
+      flex-direction: column; 
       align-items: center;
       border: 4px solid #333;
       border-radius: 20px;
@@ -71,61 +60,42 @@
       text-align: center;
       margin: 0;
       padding: 0;
-      /* We keep a fixed height so each reel is 240px tall */
       height: 240px;
     }
 
-    /*
-      We no longer position .images absolutely. 
-      Instead, we let .image-container handle the scroll logic 
-      with a fixed height. 
-      
-      OR we could keep the scroll logic if you want separate up/down 
-      animations. But for auto‐width, it’s simpler to keep normal flow.
-    */
     .images {
-      /* remove absolute positioning so normal flow can expand horizontally */
       display: flex;
-      flex-direction: column; /* stack the 3 image-containers vertically */
+      flex-direction: column;
       transition: transform 0.5s ease;
     }
 
-    /* Each "slot" is 240px tall (for the image + label). */
     .image-container {
       display: flex;
-      flex-direction: column; 
-      align-items: center; /* center the image & label horizontally */
+      flex-direction: column;
+      align-items: center;
       justify-content: flex-start;
       box-sizing: border-box;
-      /* each slot is 240px high to match the reel height */
       height: 240px;
-      padding: 10px; /* some internal spacing */
+      padding: 10px;
     }
 
-    /* The cat box images are 160px wide by default. */
     .image-container img {
       width: 160px;
       height: auto;
     }
 
-    /*
-      The label is now in normal flow below the image,
-      so a long label forces the reel to expand horizontally.
-      white-space: nowrap => label never wraps
-    */
     .label {
       margin-top: 8px; 
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       color: #fff;
       border-radius: 8px;
       padding: 4px 8px;
       box-sizing: border-box;
       font-size: 28px;
       cursor: pointer;
-      white-space: nowrap; /* force reel to expand if label is super long */
+      white-space: nowrap;
     }
 
-    /* Up/Down arrow buttons side by side. */
     .button-group {
       display: flex;
       flex-direction: row;
@@ -133,7 +103,7 @@
       gap: 10px;
       margin: 0;
       padding: 0;
-      margin-top: 10px; /* small space above the buttons */
+      margin-top: 10px;
     }
 
     .arrow-button {
@@ -157,7 +127,7 @@
     .combined-labels {
       margin-top: 60px;
       font-size: 32px;
-      font-weight: bold;
+      font-weight: normal; /* Unbold the combined text */
     }
   </style>
 </head>
@@ -165,23 +135,19 @@
   <h1>Slot Machine - Auto-Resizing Reels</h1>
 
   <div class="slot-machine">
-    <!-- Reel 1: Ado with a Very Long Phrase -->
+    <!-- Reel 1 -->
     <div class="column">
       <div class="reel-title">Ado</div>
       <div class="reel" id="reel1">
         <div class="images" id="images1">
-          <!-- Slot 1 -->
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <!-- Very long phrase forces reel to widen -->
             <div class="label">Let's test the text with spacing</div>
           </div>
-          <!-- Slot 2 -->
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
             <div class="label">There</div>
           </div>
-          <!-- Slot 3 -->
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
             <div class="label">Another Label</div>
@@ -194,7 +160,7 @@
       </div>
     </div>
 
-    <!-- Reel 2 (no top label) -->
+    <!-- Reel 2 -->
     <div class="column">
       <div class="reel-title hidden"></div>
       <div class="reel" id="reel2">
@@ -219,7 +185,7 @@
       </div>
     </div>
 
-    <!-- Reel 3 (no top label) -->
+    <!-- Reel 3 -->
     <div class="column">
       <div class="reel-title hidden"></div>
       <div class="reel" id="reel3">
@@ -244,7 +210,7 @@
       </div>
     </div>
 
-    <!-- Reel 4: Gapo -->
+    <!-- Reel 4 -->
     <div class="column">
       <div class="reel-title">Gapo</div>
       <div class="reel" id="reel4">
@@ -274,24 +240,19 @@
   <div id="combinedLabels" class="combined-labels"></div>
 
   <script>
-    /* We'll track 4 reels, each with 3 images. 
-       reelPositions = which image index (0,1,2) is visible. */
     const reelPositions = [0, 0, 0, 0];
     const reelLabels = [];
 
-    /* Basic text-to-speech function using the Web Speech API. */
     function speak(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel(); 
         const utterance = new SpeechSynthesisUtterance(text);
-        // utterance.lang = 'en-US'; // optional
         window.speechSynthesis.speak(utterance);
       } else {
-        console.warn('Web Speech API not supported in this browser.');
+        console.warn('Web Speech API not supported.');
       }
     }
 
-    /* On page load, gather all labels from the DOM. */
     window.onload = function() {
       const totalReels = 4;
       for (let reelNumber = 1; reelNumber <= totalReels; reelNumber++) {
@@ -303,7 +264,6 @@
       }
       updateCombinedLabels();
 
-      // Also let user click the label to speak it
       document.querySelectorAll('.label').forEach(labelEl => {
         labelEl.addEventListener('click', () => {
           speak(labelEl.textContent.trim());
@@ -311,7 +271,6 @@
       });
     };
 
-    /* Update the combined text at the bottom with the currently visible label for each reel. */
     function updateCombinedLabels() {
       const currentLabels = reelPositions.map((pos, reelIndex) => {
         return reelLabels[reelIndex][pos];
@@ -319,11 +278,6 @@
       document.getElementById("combinedLabels").textContent = currentLabels.join(" ");
     }
 
-    /*
-      We still do "scrollUp" and "scrollDown" by translating .images up/down.
-      The reel is 240px tall, so each slot is 240px tall,
-      meaning offset = reelPositions[reelIndex] * 240
-    */
     function scrollUp(reelNumber) {
       const reelIndex = reelNumber - 1;
       reelPositions[reelIndex]--;
