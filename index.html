@@ -153,15 +153,15 @@
         <div class="images" id="images2">
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label" onclick="speak('Strawberry')">Strawberry</div>
+            <div class="label">Strawberry</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label" onclick="speak('Banana')">Banana</div>
+            <div class="label">Banana</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label" onclick="speak('Orange')">Orange</div>
+            <div class="label">Orange</div>
           </div>
         </div>
       </div>
@@ -178,15 +178,15 @@
         <div class="images" id="images3">
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label" onclick="speak('Strawberry')">Strawberry</div>
+            <div class="label">Strawberry</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label" onclick="speak('Banana')">Banana</div>
+            <div class="label">Banana</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label" onclick="speak('Orange')">Orange</div>
+            <div class="label">Orange</div>
           </div>
         </div>
       </div>
@@ -203,15 +203,15 @@
         <div class="images" id="images4">
           <div class="image-container">
             <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label" onclick="speak('Strawberry')">Strawberry</div>
+            <div class="label">Strawberry</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label" onclick="speak('Banana')">Banana</div>
+            <div class="label">Banana</div>
           </div>
           <div class="image-container">
             <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label" onclick="speak('Orange')">Orange</div>
+            <div class="label">Orange</div>
           </div>
         </div>
       </div>
@@ -227,7 +227,7 @@
 
   <script>
     const reelPositions = [0, 0, 0, 0];
-    const reelLabels = [];
+    const reelLabels = [[], [], [], []];
 
     function speak(text) {
       if ('speechSynthesis' in window) {
@@ -268,13 +268,12 @@
     }
 
     window.onload = function () {
-      const totalReels = 4;
-      for (let reelNumber = 2; reelNumber <= totalReels; reelNumber++) {
+      for (let reelNumber = 2; reelNumber <= 4; reelNumber++) {
         const containers = document.querySelectorAll(`#images${reelNumber} .image-container`);
         const labelsForThisReel = Array.from(containers).map(container => {
           return container.querySelector(".label").textContent.trim();
         });
-        reelLabels.push(labelsForThisReel);
+        reelLabels[reelNumber - 1] = labelsForThisReel;
       }
       updateCombinedLabels();
     };
