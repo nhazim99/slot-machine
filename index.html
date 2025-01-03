@@ -13,62 +13,56 @@
     }
 
     h1 {
-      margin-top: 10px;
-      font-size: calc(1em + 2vw); /* Responsive title size */
+      margin: 20px 0;
+      font-size: 2em;
+      color: #4a154b;
     }
 
     .slot-machine {
       display: flex;
-      flex-wrap: nowrap; /* Prevent wrapping */
       justify-content: center;
       align-items: flex-start;
-      gap: 1vw; /* Dynamic gap between reels */
-      margin: 10px auto;
-      overflow-x: auto; /* Enable horizontal scrolling if necessary */
-      padding: 10px;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 100%;
+      overflow-x: auto; /* Allows horizontal scrolling on small screens */
     }
 
     .column {
       display: flex;
       flex-direction: column;
       align-items: center;
-      flex: 0 1 calc(25% - 20px); /* Ensure shrinkability while maintaining space */
-      min-width: 120px; /* Minimum width for each column */
-      max-width: 200px; /* Limit maximum width for larger screens */
+      width: fit-content;
+      min-width: 180px;
+      padding: 0;
     }
 
     .reel-title {
       background: rgba(0, 0, 0, 0.5);
-      color: #fff;
+      color: white;
       border-radius: 8px;
       padding: 4px 8px;
-      text-align: center;
-      font-size: calc(0.5em + 1vw); /* Responsive label size */
-      margin: 0;
-      line-height: 1.2;
+      font-size: 1.2em;
+      margin-bottom: 10px;
       white-space: nowrap;
     }
 
     .reel {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      width: 160px;
+      height: 200px;
       border: 2px solid #333;
       border-radius: 10px;
-      background-color: white;
       overflow: hidden;
       position: relative;
-      box-sizing: border-box;
-      text-align: center;
-      height: calc(100px + 5vw); /* Scales dynamically */
-      width: calc(80px + 5vw);
-      flex-shrink: 1; /* Allow shrinking on smaller screens */
+      background-color: white;
     }
 
     .images {
       display: flex;
       flex-direction: column;
-      transition: transform 0.5s ease;
+      position: absolute;
+      width: 100%;
+      transition: transform 0.5s ease-in-out;
     }
 
     .image-container {
@@ -76,83 +70,70 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-sizing: border-box;
-      height: calc(100px + 5vw); /* Match reel height */
+      height: 200px;
+      padding: 10px;
     }
 
     .image-container img {
-      width: calc(50px + 3vw); /* Scales dynamically */
-      height: auto;
+      max-width: 100%;
+      max-height: 80%;
+      margin-bottom: 8px;
     }
 
     .label {
-      margin-top: 5px;
       background: rgba(0, 0, 0, 0.5);
-      color: #fff;
+      color: white;
       border-radius: 8px;
       padding: 4px 8px;
-      box-sizing: border-box;
-      font-size: calc(0.5em + 1vw); /* Scales with screen */
-      cursor: pointer;
+      font-size: 0.9em;
       white-space: nowrap;
     }
 
     .button-group {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
       gap: 10px;
-      margin: 0;
-      padding: 0;
       margin-top: 10px;
     }
 
     .arrow-button {
-      width: calc(20px + 1vw); /* Responsive button size */
-      height: calc(20px + 1vw);
-      font-size: calc(0.5em + 0.5vw);
-      background-color: #f2f2f2;
-      border: 2px solid #ccc;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5em;
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
       border-radius: 5px;
       cursor: pointer;
-      outline: none;
-    }
-
-    .arrow-button:hover {
-      background-color: #eee;
     }
 
     .arrow-button:active {
-      background-color: #ddd;
+      background-color: #d0d0d0;
     }
 
     .combined-labels {
-      margin-top: 20px;
-      font-size: calc(1em + 1vw); /* Scales dynamically */
-      font-weight: normal;
+      margin: 20px 0;
+      font-size: 1.2em;
+      color: #4a154b;
     }
   </style>
 </head>
 <body>
   <h1>Slot Machine - Fully Responsive Design</h1>
-
   <div class="slot-machine">
-    <!-- Reel 1 -->
     <div class="column">
       <div class="reel-title">Ado</div>
       <div class="reel" id="reel1">
         <div class="images" id="images1">
           <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
+            <img src="https://i.imgur.com/lA5R7h1.png" alt="Orange">
+            <div class="label">Orange</div>
           </div>
           <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
+            <img src="https://i.imgur.com/aBFnnuD.png" alt="Banana">
             <div class="label">Banana</div>
           </div>
           <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
+            <img src="https://i.imgur.com/szzYbfE.png" alt="Strawberry">
+            <div class="label">Strawberry</div>
           </div>
         </div>
       </div>
@@ -162,72 +143,22 @@
       </div>
     </div>
 
-    <!-- Reel 2 -->
-    <div class="column">
-      <div class="reel-title hidden"></div>
-      <div class="reel" id="reel2">
-        <div class="images" id="images2">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
-          </div>
-        </div>
-      </div>
-      <div class="button-group">
-        <button class="arrow-button" onclick="scrollUp(2)">▲</button>
-        <button class="arrow-button" onclick="scrollDown(2)">▼</button>
-      </div>
-    </div>
-
-    <!-- Reel 3 -->
-    <div class="column">
-      <div class="reel-title hidden"></div>
-      <div class="reel" id="reel3">
-        <div class="images" id="images3">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
-            <div class="label">Banana</div>
-          </div>
-          <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
-          </div>
-        </div>
-      </div>
-      <div class="button-group">
-        <button class="arrow-button" onclick="scrollUp(3)">▲</button>
-        <button class="arrow-button" onclick="scrollDown(3)">▼</button>
-      </div>
-    </div>
-
-    <!-- Reel 4 -->
+    <!-- Additional Reels -->
     <div class="column">
       <div class="reel-title">Gapo</div>
       <div class="reel" id="reel4">
         <div class="images" id="images4">
           <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
+            <img src="https://i.imgur.com/lA5R7h1.png" alt="Orange">
+            <div class="label">Orange</div>
           </div>
           <div class="image-container">
-            <img src="https://i.imgur.com/szzYbfE.png" alt="Banana">
+            <img src="https://i.imgur.com/aBFnnuD.png" alt="Banana">
             <div class="label">Banana</div>
           </div>
           <div class="image-container">
-            <img src="https://i.imgur.com/aBFnnuD.png" alt="Orange">
-            <div class="label">Orange</div>
+            <img src="https://i.imgur.com/szzYbfE.png" alt="Strawberry">
+            <div class="label">Strawberry</div>
           </div>
         </div>
       </div>
@@ -238,66 +169,33 @@
     </div>
   </div>
 
-  <h2 style="margin-top: 10px; font-size: calc(1em + 1vw);">My Sentence</h2>
-  <div id="combinedLabels" class="combined-labels"></div>
+  <h2>My Sentence</h2>
+  <div id="combinedLabels" class="combined-labels">Orange Orange Strawberry Strawberry</div>
 
   <script>
     const reelPositions = [0, 0, 0, 0];
-    const reelLabels = [];
-
-    function speak(text) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        window.speechSynthesis.speak(utterance);
-      }
-    }
-
-    window.onload = function () {
-      const totalReels = 4;
-      for (let reelNumber = 1; reelNumber <= totalReels; reelNumber++) {
-        const containers = document.querySelectorAll(`#images${reelNumber} .image-container`);
-        const labelsForThisReel = Array.from(containers).map(container =>
-          container.querySelector('.label').textContent.trim()
-        );
-        reelLabels.push(labelsForThisReel);
-      }
-      updateCombinedLabels();
-
-      document.querySelectorAll('.label').forEach(labelEl => {
-        labelEl.addEventListener('click', () => {
-          speak(labelEl.textContent.trim());
-        });
-      });
-    };
+    const reelLabels = [
+      ["Orange", "Banana", "Strawberry"],
+      ["Orange", "Banana", "Strawberry"],
+      ["Orange", "Banana", "Strawberry"],
+      ["Orange", "Banana", "Strawberry"],
+    ];
 
     function updateCombinedLabels() {
-      const currentLabels = reelPositions.map((pos, reelIndex) => reelLabels[reelIndex][pos]);
-      document.getElementById('combinedLabels').textContent = currentLabels.join(' ');
+      const combined = reelPositions.map((pos, index) => reelLabels[index][pos]).join(" ");
+      document.getElementById("combinedLabels").textContent = combined;
     }
 
     function scrollUp(reelNumber) {
-      const reelIndex = reelNumber - 1;
-      reelPositions[reelIndex]--;
-      if (reelPositions[reelIndex] < 0) {
-        reelPositions[reelIndex] = 2;
-      }
-      const offset = reelPositions[reelIndex] * 200;
-      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
+      reelPositions[reelNumber - 1] = (reelPositions[reelNumber - 1] + 2) % 3;
+      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${reelPositions[reelNumber - 1] * 200}px)`;
       updateCombinedLabels();
-      speak(reelLabels[reelIndex][reelPositions[reelIndex]]);
     }
 
     function scrollDown(reelNumber) {
-      const reelIndex = reelNumber - 1;
-      reelPositions[reelIndex]++;
-      if (reelPositions[reelIndex] > 2) {
-        reelPositions[reelIndex] = 0;
-      }
-      const offset = reelPositions[reelIndex] * 200;
-      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
+      reelPositions[reelNumber - 1] = (reelPositions[reelNumber - 1] + 1) % 3;
+      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${reelPositions[reelNumber - 1] * 200}px)`;
       updateCombinedLabels();
-      speak(reelLabels[reelIndex][reelPositions[reelIndex]]);
     }
   </script>
 </body>
