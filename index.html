@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slot Machine - Auto-Resizing Reels</title>
+  <title>Slot Machine - Updated First Reel</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,10 +15,9 @@
       font-size: 2em;
     }
 
-    /* The container for all reels in one row. */
     .slot-machine {
       display: flex;
-      align-items: flex-start;  /* top alignment */
+      align-items: flex-start;
       justify-content: center;
       gap: 40px;
       margin: 60px auto;
@@ -39,9 +38,9 @@
       padding: 4px 8px;
       text-align: center;
       font-size: 28px;
-      margin: 0; 
-      min-height: 40px; 
-      line-height: 40px; 
+      margin: 0;
+      min-height: 40px;
+      line-height: 40px;
       white-space: nowrap;
     }
     .reel-title.hidden {
@@ -86,7 +85,7 @@
     }
 
     .label {
-      margin-top: 8px; 
+      margin-top: 8px;
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
       border-radius: 8px;
@@ -118,6 +117,7 @@
       cursor: pointer;
       outline: none;
     }
+
     .arrow-button:hover {
       background-color: #eee;
     }
@@ -126,30 +126,27 @@
     }
 
     .combined-labels {
-      margin-top: 60px;
+      margin-top: 40px;
       font-size: 32px;
-      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>Slot Machine - Auto-Resizing Reels</h1>
+  <h1>Slot Machine - Updated First Reel</h1>
 
   <div class="slot-machine">
-    <!-- Reel 1: Ado with one picture and label -->
+    <!-- Reel 1: Ado -->
     <div class="column">
       <div class="reel-title">Ado</div>
-      <div class="reel" id="reel1">
-        <div class="images" id="images1">
-          <div class="image-container">
-            <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
-            <div class="label">Strawberry</div>
-          </div>
+      <div class="reel">
+        <div class="image-container">
+          <img src="https://i.imgur.com/lA5R7h1.png" alt="Strawberry">
+          <div class="label" onclick="speak('Strawberry')">Strawberry</div>
         </div>
       </div>
     </div>
 
-    <!-- Reel 2 (no top label) -->
+    <!-- Reel 2 -->
     <div class="column">
       <div class="reel-title hidden"></div>
       <div class="reel" id="reel2">
@@ -174,7 +171,7 @@
       </div>
     </div>
 
-    <!-- Reel 3 (no top label) -->
+    <!-- Reel 3 -->
     <div class="column">
       <div class="reel-title hidden"></div>
       <div class="reel" id="reel3">
@@ -225,23 +222,54 @@
     </div>
   </div>
 
-  <h2 style="margin-top: 60px; font-size: 2em;">My Sentence</h2>
+  <h2>My Sentence</h2>
   <div id="combinedLabels" class="combined-labels"></div>
 
   <script>
-    const reelPositions = [0, 0, 0, 0];
+    const reelPositions = [0, 0, 0];
     const reelLabels = [];
+
+    function speak(text) {
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+      }
+    }
 
     function updateCombinedLabels() {
       const currentLabels = reelPositions.map((pos, reelIndex) => {
-        return reelLabels[reelIndex]?.[pos] || '';
+        return reelLabels[reelIndex][pos];
       });
       document.getElementById("combinedLabels").textContent = currentLabels.join(" ");
     }
 
-    window.onload = function() {
+    function scrollUp(reelNumber) {
+      const reelIndex = reelNumber - 1;
+      reelPositions[reelIndex]--;
+      if (reelPositions[reelIndex] < 0) {
+        reelPositions[reelIndex] = 2;
+      }
+      const offset = reelPositions[reelIndex] * 240;
+      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
+      updateCombinedLabels();
+      speak(reelLabels[reelIndex][reelPositions[reelIndex]]);
+    }
+
+    function scrollDown(reelNumber) {
+      const reelIndex = reelNumber - 1;
+      reelPositions[reelIndex]++;
+      if (reelPositions[reelIndex] > 2) {
+        reelPositions[reelIndex] = 0;
+      }
+      const offset = reelPositions[reelIndex] * 240;
+      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
+      updateCombinedLabels();
+      speak(reelLabels[reelIndex][reelPositions[reelIndex]]);
+    }
+
+    window.onload = function () {
       const totalReels = 4;
-      for (let reelNumber = 1; reelNumber <= totalReels; reelNumber++) {
+      for (let reelNumber = 2; reelNumber <= totalReels; reelNumber++) {
         const containers = document.querySelectorAll(`#images${reelNumber} .image-container`);
         const labelsForThisReel = Array.from(containers).map(container => {
           return container.querySelector(".label").textContent.trim();
@@ -250,28 +278,6 @@
       }
       updateCombinedLabels();
     };
-
-    function scrollUp(reelNumber) {
-      const reelIndex = reelNumber - 1;
-      reelPositions[reelIndex]--;
-      if (reelPositions[reelIndex] < 0) {
-        reelPositions[reelIndex] = reelLabels[reelIndex].length - 1;
-      }
-      const offset = reelPositions[reelIndex] * 240;
-      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
-      updateCombinedLabels();
-    }
-
-    function scrollDown(reelNumber) {
-      const reelIndex = reelNumber - 1;
-      reelPositions[reelIndex]++;
-      if (reelPositions[reelIndex] >= reelLabels[reelIndex].length) {
-        reelPositions[reelIndex] = 0;
-      }
-      const offset = reelPositions[reelIndex] * 240;
-      document.getElementById(`images${reelNumber}`).style.transform = `translateY(-${offset}px)`;
-      updateCombinedLabels();
-    }
   </script>
 </body>
 </html>
