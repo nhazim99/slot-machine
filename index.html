@@ -43,6 +43,7 @@
       line-height: 40px;
       white-space: nowrap;
     }
+
     .reel-title.hidden {
       visibility: hidden;
     }
@@ -227,7 +228,7 @@
 
   <script>
     const reelPositions = [0, 0, 0, 0];
-    const reelLabels = [[], [], [], []];
+    const reelLabels = [["Strawberry"], [], [], []];
 
     function speak(text) {
       if ('speechSynthesis' in window) {
@@ -238,6 +239,9 @@
 
     function updateCombinedLabels() {
       const currentLabels = reelPositions.map((pos, reelIndex) => {
+        if (reelIndex === 0) {
+          return reelLabels[reelIndex][0]; // First reel always has one label
+        }
         return reelLabels[reelIndex][pos];
       });
       document.getElementById("combinedLabels").textContent = currentLabels.join(" ");
